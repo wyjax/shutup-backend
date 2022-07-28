@@ -1,4 +1,4 @@
-package com.wyjax.shutup.common.config;
+package com.wyjax.shutup.common.websocket.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;

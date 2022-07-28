@@ -1,5 +1,6 @@
-package com.wyjax.shutup.common.config;
+package com.wyjax.shutup.common.websocket.config;
 
+import com.wyjax.shutup.common.websocket.handler.SocketTextHandler;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
 import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
