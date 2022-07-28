@@ -11,7 +11,7 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 @RequiredArgsConstructor
-public class ChatController {
+public class ChatMessageController {
     private final SimpMessagingTemplate simpMessagingTemplate;
 
     @MessageMapping("/chat.sendMessage")
