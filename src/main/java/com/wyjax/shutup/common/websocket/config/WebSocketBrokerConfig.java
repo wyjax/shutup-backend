@@ -14,6 +14,7 @@ public class WebSocketBrokerConfig implements WebSocketMessageBrokerConfigurer {
     // STOMP에서 사용하는 메시지 브로커를 설정
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         registry.addEndpoint("shut-up")
+                .setAllowedOriginPatterns("*")
                 .withSockJS();
     }
 
