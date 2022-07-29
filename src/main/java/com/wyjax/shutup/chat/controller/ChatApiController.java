@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
@@ -47,5 +48,15 @@ public class ChatApiController {
         synchronized (this) {
             return "채팅봇_" + nameIndex++;
         }
+    }
+
+    @GetMapping("/api/name")
+    public String getNickName(HttpServletRequest request) {
+        StringBuilder sb = new StringBuilder("익명");
+        String addr = request.getRemoteAddr();
+        sb.append("(")
+                .append(addr)
+                .append(")");
+        return sb.toString();
     }
 }

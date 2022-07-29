@@ -1,7 +1,6 @@
 package com.wyjax.shutup.chat.domain;
 
 import com.wyjax.shutup.common.domain.BaseTimeEntity;
-import com.wyjax.shutup.member.domain.Member;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -14,10 +13,6 @@ import javax.persistence.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class ChatMessage extends BaseTimeEntity {
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "member_id")
-    private Member member;
-
     @Column(length = 63, nullable = false)
     private String nickName;
 
@@ -29,10 +24,9 @@ public class ChatMessage extends BaseTimeEntity {
     private ChatRoom chatRoom;
 
     @Builder
-    public ChatMessage(ChatRoom chatRoom, Member member, String content) {
+    public ChatMessage(ChatRoom chatRoom, String nickName, String content) {
         this.chatRoom = chatRoom;
-        this.member = member;
-        this.nickName = member.getName();
+        this.nickName = nickName;
         this.content = content;
     }
 }
