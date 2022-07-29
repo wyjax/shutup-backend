@@ -20,7 +20,7 @@ public class WebSocketBrokerConfig implements WebSocketMessageBrokerConfigurer {
 
     @Override
     public void configureMessageBroker(MessageBrokerRegistry registry) {
-        registry.enableSimpleBroker("/queue", "/topic"); // 내장 메시지 브로커 사용, queue 1대1, topic 1대n
-        registry.setApplicationDestinationPrefixes("/app");
+        registry.enableSimpleBroker("/sub"); // 내장 메시지 브로커 사용, queue 1대1, topic 1대n
+        registry.setApplicationDestinationPrefixes("/pub");
     }
 }
