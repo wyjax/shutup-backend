@@ -27,6 +27,7 @@ public class ChatMessageService {
                 .map(chatMessage -> {
                     ChatMessageModel model = new ChatMessageModel();
                     model.setName(chatMessage.getNickName());
+                    model.setLoginId(chatMessage.getLoginId());
                     model.setContent(chatMessage.getContent());
                     return model;
                 }).collect(Collectors.toList());
@@ -39,6 +40,7 @@ public class ChatMessageService {
         ChatMessage message = ChatMessage.builder()
                 .chatRoom(chatRoom)
                 .nickName(chatMessage.getName())
+                .loginId(chatMessage.getLoginId())
                 .content(chatMessage.getContent())
                 .build();
         chatMessageRepository.save(message);

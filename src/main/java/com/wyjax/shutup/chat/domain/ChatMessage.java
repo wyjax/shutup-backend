@@ -16,6 +16,9 @@ public class ChatMessage extends BaseTimeEntity {
     @Column(length = 63, nullable = false)
     private String nickName;
 
+    @Column(length = 63, nullable = false)
+    private String loginId;
+
     @Column(columnDefinition = "TEXT")
     private String content;
 
@@ -24,9 +27,10 @@ public class ChatMessage extends BaseTimeEntity {
     private ChatRoom chatRoom;
 
     @Builder
-    public ChatMessage(ChatRoom chatRoom, String nickName, String content) {
+    public ChatMessage(ChatRoom chatRoom, String nickName, String loginId, String content) {
         this.chatRoom = chatRoom;
         this.nickName = nickName;
+        this.loginId = loginId;
         this.content = content;
     }
 }

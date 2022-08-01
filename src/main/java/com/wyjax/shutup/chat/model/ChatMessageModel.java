@@ -8,6 +8,7 @@ import lombok.*;
 public class ChatMessageModel {
     private MessageType type;
     private String content;
+    private String loginId;
     private String name;
     private String uuid;
 
