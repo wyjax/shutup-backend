@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface ChatMessageRepository extends JpaRepository<ChatMessage, Long> {
 
-    List<ChatMessage> findByChatRoomUuid(String uuid, Pageable pageable);
+    List<ChatMessage> findByChatRoomUuidOrderByIdDesc(String uuid, Pageable pageable);
 }

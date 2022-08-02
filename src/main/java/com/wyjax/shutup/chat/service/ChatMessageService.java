@@ -10,9 +10,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -23,14 +23,16 @@ public class ChatMessageService {
 
     @Transactional(readOnly = true)
     public List<ChatMessageModel> geChatMessages(String uuid, Pageable pageable) {
-        return chatMessageRepository.findByChatRoomUuid(uuid, pageable).stream()
-                .map(chatMessage -> {
-                    ChatMessageModel model = new ChatMessageModel();
-                    model.setName(chatMessage.getNickName());
-                    model.setLoginId(chatMessage.getLoginId());
-                    model.setContent(chatMessage.getContent());
-                    return model;
-                }).collect(Collectors.toList());
+        List<ChatMessageModel> chatMessageModels = new ArrayList<>();
+        List<ChatMessage> messages = chatMessageRepository.findByChatRoomUuidOrderByIdDesc(uuid, pageable);
+        for (int i = messages.size() - 1; i >= 0; i--) {
+            ChatMessageModel model = new ChatMessageModel();
+            model.setName(messages.get(i).getNickName());
+            model.setLoginId(messages.get(i).getLoginId());
+            model.setContent(messages.get(i).getContent());
+            chatMessageModels.add(model);
+        }
+        return chatMessageModels;
     }
 
     @Transactional
